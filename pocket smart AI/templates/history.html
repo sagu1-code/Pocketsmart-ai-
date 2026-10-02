@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}
+Recommendation History - PocketSmart AI
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+
+    <h1>📋 Recommendation History</h1>
+
+    <p>
+        View your previous PocketSmart AI recommendations.
+    </p>
+
+</div>
+
+
+{% if recommendations %}
+
+<div class="history-list">
+
+    {% for recommendation in recommendations %}
+
+    <div class="history-card">
+
+        <div class="history-info">
+
+            <h2>
+                {% if recommendation["category"] == "Home Interior" %}
+                    🏠
+                {% elif recommendation["category"] == "Party Planning" %}
+                    🎉
+                {% elif recommendation["category"] == "Jewelry" %}
+                    💎
+                {% else %}
+                    🤖
+                {% endif %}
+
+                {{ recommendation["category"] }}
+            </h2>
+
+            <p>
+                <strong>Budget:</strong>
+                ₹{{ "{:,.0f}".format(recommendation["budget"]) }}
+            </p>
+
+            <p>
+                <strong>Date:</strong>
+                {{ recommendation["created_at"] }}
+            </p>
+
+        </div>
+
+
+        <div class="history-action">
+
+            <a
+                href="/recommendations-details/{{ recommendation['id'] }}"
+                class="small-btn"
+            >
+                View Recommendation
+            </a>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="empty-state">
+
+    <div class="empty-icon">
+        📭
+    </div>
+
+    <h2>No Recommendations Yet</h2>
+
+    <p>
+        You haven't generated any recommendations.
+    </p>
+
+    <a href="/dashboard" class="btn">
+        Start Planning
+    </a>
+
+</div>
+
+{% endif %}
+
+{% endblock %}
