@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard - PocketSmart AI
+{% endblock %}
+
+{% block content %}
+
+<section class="dashboard-header">
+
+    <h1>Welcome, {{ user["username"] }}! 👋</h1>
+
+    <p>
+        What would you like to plan today?
+    </p>
+
+</section>
+
+
+<section class="planner-grid">
+
+    <!-- Home Interior -->
+
+    <div class="planner-card">
+
+        <div class="planner-icon">
+            🏠
+        </div>
+
+        <h2>Home Interior</h2>
+
+        <p>
+            Plan your home interior according to
+            your room requirements, preferred style,
+            and budget.
+        </p>
+
+        <a href="/home-planner" class="btn">
+            Start Planning
+        </a>
+
+    </div>
+
+
+    <!-- Party Planning -->
+
+    <div class="planner-card">
+
+        <div class="planner-icon">
+            🎉
+        </div>
+
+        <h2>Party Planning</h2>
+
+        <p>
+            Organize your event based on the number
+            of guests, location, event type, and budget.
+        </p>
+
+        <a href="/party-planner" class="btn">
+            Plan a Party
+        </a>
+
+    </div>
+
+
+    <!-- Jewelry -->
+
+    <div class="planner-card">
+
+        <div class="planner-icon">
+            💎
+        </div>
+
+        <h2>Jewelry</h2>
+
+        <p>
+            Find jewelry recommendations based on
+            your occasion, jewelry type, color, and budget.
+        </p>
+
+        <a href="/jewelry-planner" class="btn">
+            Find Jewelry
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="recent-section">
+
+    <div class="section-heading">
+
+        <h2>Recent Recommendations</h2>
+
+        <a href="/history">
+            View All
+        </a>
+
+    </div>
+
+
+    {% if recommendations %}
+
+        <div class="recommendation-list">
+
+            {% for recommendation in recommendations %}
+
+                <div class="recommendation-item">
+
+                    <div>
+
+                        <h3>
+                            {{ recommendation["category"] }}
+                        </h3>
+
+                        <p>
+                            Budget:
+                            ₹{{ "{:,.0f}".format(recommendation["budget"]) }}
+                        </p>
+
+                    </div>
+
+                    <a
+                        href="/recommendations-details/{{ recommendation['id'] }}"
+                        class="small-btn"
+                    >
+                        View
+                    </a>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="empty-state">
+
+            <p>
+                You don't have any recommendations yet.
+            </p>
+
+            <p>
+                Choose one of the planners above to get started.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}

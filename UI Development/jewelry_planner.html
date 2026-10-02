@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+
+{% block title %}
+Jewelry Planner - PocketSmart AI
+{% endblock %}
+
+{% block content %}
+
+<div class="planner-page">
+
+    <div class="page-header">
+
+        <h1>💎 Jewelry Planner</h1>
+
+        <p>
+            Get jewelry recommendations based on your
+            occasion, preferred style, color, and budget.
+        </p>
+
+    </div>
+
+
+    <div class="form-card">
+
+        <form
+            action="/generate-jewelry"
+            method="post"
+            enctype="multipart/form-data"
+        >
+
+            <label for="budget">
+                Your Budget (₹)
+            </label>
+
+            <input
+                type="number"
+                id="budget"
+                name="budget"
+                min="1"
+                step="1"
+                placeholder="Example: 25000"
+                required
+            >
+
+
+            <label for="occasion">
+                Occasion
+            </label>
+
+            <select
+                id="occasion"
+                name="occasion"
+                required
+            >
+
+                <option value="">
+                    Select an occasion
+                </option>
+
+                <option value="Wedding">
+                    Wedding
+                </option>
+
+                <option value="Engagement">
+                    Engagement
+                </option>
+
+                <option value="Birthday">
+                    Birthday
+                </option>
+
+                <option value="Party">
+                    Party
+                </option>
+
+                <option value="Festival">
+                    Festival
+                </option>
+
+                <option value="Daily Wear">
+                    Daily Wear
+                </option>
+
+                <option value="Gift">
+                    Gift
+                </option>
+
+            </select>
+
+
+            <label for="jewelry_type">
+                Jewelry Type
+            </label>
+
+            <select
+                id="jewelry_type"
+                name="jewelry_type"
+                required
+            >
+
+                <option value="">
+                    Select jewelry type
+                </option>
+
+                <option value="Necklace">
+                    Necklace
+                </option>
+
+                <option value="Earrings">
+                    Earrings
+                </option>
+
+                <option value="Bracelet">
+                    Bracelet
+                </option>
+
+                <option value="Ring">
+                    Ring
+                </option>
+
+                <option value="Bangles">
+                    Bangles
+                </option>
+
+                <option value="Jewelry Set">
+                    Jewelry Set
+                </option>
+
+            </select>
+
+
+            <label for="preferred_color">
+                Preferred Color / Metal
+            </label>
+
+            <select
+                id="preferred_color"
+                name="preferred_color"
+                required
+            >
+
+                <option value="">
+                    Select a preference
+                </option>
+
+                <option value="Gold">
+                    Gold
+                </option>
+
+                <option value="Silver">
+                    Silver
+                </option>
+
+                <option value="Rose Gold">
+                    Rose Gold
+                </option>
+
+                <option value="Diamond">
+                    Diamond
+                </option>
+
+                <option value="Pearl">
+                    Pearl
+                </option>
+
+                <option value="Any">
+                    Any
+                </option>
+
+            </select>
+
+
+            <label for="requirements">
+                Additional Requirements
+            </label>
+
+            <textarea
+                id="requirements"
+                name="requirements"
+                rows="5"
+                placeholder="Example: Prefer a simple and elegant design."
+            ></textarea>
+
+
+            <label for="outfit_image">
+                Optional Outfit Image
+            </label>
+
+            <input
+                type="file"
+                id="outfit_image"
+                name="outfit_image"
+                accept="image/*"
+            >
+
+            <small class="form-help">
+                Upload an outfit image if you want to provide
+                additional visual context.
+            </small>
+
+
+            <button
+                type="submit"
+                class="btn full-width"
+            >
+                ✨ Generate Jewelry Recommendation
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home Interior Planner - PocketSmart AI
+{% endblock %}
+
+{% block content %}
+
+<div class="planner-page">
+
+    <div class="page-header">
+
+        <h1>🏠 Home Interior Planner</h1>
+
+        <p>
+            Tell PocketSmart AI about your room and budget.
+            We'll create a budget-aware interior recommendation.
+        </p>
+
+    </div>
+
+
+    <div class="form-card">
+
+        <form action="/generate-home" method="post">
+
+            <label for="budget">
+                Your Budget (₹)
+            </label>
+
+            <input
+                type="number"
+                id="budget"
+                name="budget"
+                min="1"
+                step="1"
+                placeholder="Example: 100000"
+                required
+            >
+
+
+            <label for="room">
+                Room Type
+            </label>
+
+            <select id="room" name="room" required>
+
+                <option value="">
+                    Select a room
+                </option>
+
+                <option value="Living Room">
+                    Living Room
+                </option>
+
+                <option value="Bedroom">
+                    Bedroom
+                </option>
+
+                <option value="Kitchen">
+                    Kitchen
+                </option>
+
+                <option value="Dining Room">
+                    Dining Room
+                </option>
+
+                <option value="Study Room">
+                    Study Room
+                </option>
+
+                <option value="Full Home">
+                    Full Home
+                </option>
+
+            </select>
+
+
+            <label for="style">
+                Preferred Interior Style
+            </label>
+
+            <select id="style" name="style" required>
+
+                <option value="">
+                    Select a style
+                </option>
+
+                <option value="Modern">
+                    Modern
+                </option>
+
+                <option value="Minimalist">
+                    Minimalist
+                </option>
+
+                <option value="Traditional">
+                    Traditional
+                </option>
+
+                <option value="Contemporary">
+                    Contemporary
+                </option>
+
+                <option value="Luxury">
+                    Luxury
+                </option>
+
+                <option value="Budget Friendly">
+                    Budget Friendly
+                </option>
+
+            </select>
+
+
+            <label for="requirements">
+                Additional Requirements
+            </label>
+
+            <textarea
+                id="requirements"
+                name="requirements"
+                rows="5"
+                placeholder="Example: Need a sofa, TV unit, storage and warm lighting."
+            ></textarea>
+
+
+            <button type="submit" class="btn full-width">
+                ✨ Generate Recommendation
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
